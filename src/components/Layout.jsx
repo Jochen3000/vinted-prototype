@@ -11,7 +11,7 @@ function Layout() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-vinted-text">
+    <div className="min-h-screen flex flex-col bg-white text-vinted-text dark:bg-stone-950 dark:text-stone-100">
       <Header />
       <main className="flex-grow">
         <Outlet />

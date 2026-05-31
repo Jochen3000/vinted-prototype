@@ -8,6 +8,12 @@ body {
   color: #171717;
 }
 
+html.dark,
+html.dark body {
+  background-color: #0c0a09;
+  color: #e7e5e4;
+}
+
 /* Hide scrollbars on horizontal filter rails */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

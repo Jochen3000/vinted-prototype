@@ -39,23 +39,22 @@ function Catalogue() {
 
   return (
     <div className="max-w-[1280px] mx-auto px-4 lg:px-6 py-6">
-      {/* Ad slot placeholder, like the real catalogue */}
-      <p className="text-xs text-stone-400 mb-1">Ad</p>
-      <div className="h-40 sm:h-56 rounded-md bg-stone-100 mb-6 flex items-center justify-center text-stone-300 text-sm">
-        Advertisement
-      </div>
-
-      <h1 className="text-2xl font-bold text-stone-900 mb-4">Items</h1>
+      <h1 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+        Items
+      </h1>
 
       {/* Filter pill rail */}
       <div className="flex flex-wrap items-center gap-2 mb-3">
         {filters.map((f) => (
           <button
             key={f}
-            className="flex items-center gap-1 text-sm text-stone-800 border border-stone-300 rounded-full px-3 h-9 hover:bg-stone-50"
+            className="flex items-center gap-1 text-sm text-stone-800 dark:text-stone-200 border border-stone-300 dark:border-stone-600 rounded-full px-3 h-9 hover:bg-stone-50 dark:hover:bg-stone-800"
           >
             {f}
-            <ChevronDown size={16} className="text-stone-500" />
+            <ChevronDown
+              size={16}
+              className="text-stone-500 dark:text-stone-400"
+            />
           </button>
         ))}
       </div>
@@ -65,16 +64,16 @@ function Catalogue() {
         <div className="mb-4">
           <button
             onClick={() => navigate("/catalog")}
-            className="inline-flex items-center gap-2 text-sm text-stone-800 border border-stone-300 rounded-full px-3 h-9 bg-stone-50"
+            className="inline-flex items-center gap-2 text-sm text-stone-800 dark:text-stone-200 border border-stone-300 dark:border-stone-600 rounded-full px-3 h-9 bg-stone-50 dark:bg-stone-900"
           >
             {params.get("search_text")}
-            <X size={16} className="text-stone-500" />
+            <X size={16} className="text-stone-500 dark:text-stone-400" />
           </button>
         </div>
       )}
 
       {/* Category quick links */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-1 gap-x-8 border-y border-stone-100 py-4 mb-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-1 gap-x-8 border-y border-stone-100 dark:border-stone-800 py-4 mb-4">
         {quickLinks.flat().map((l) => (
           <button
             key={l}
@@ -89,28 +88,31 @@ function Catalogue() {
       </div>
 
       <div className="flex items-center justify-between mb-4">
-        <p className="text-sm text-stone-500">
+        <p className="text-sm text-stone-500 dark:text-stone-400">
           {results.length === items.length
             ? "500+ results."
             : `${results.length} result${results.length === 1 ? "" : "s"}.`}
         </p>
-        <div className="flex items-center gap-1 text-sm text-stone-700">
+        <div className="flex items-center gap-1 text-sm text-stone-700 dark:text-stone-300">
           Search results
-          <HelpCircle size={16} className="text-stone-400" />
+          <HelpCircle
+            size={16}
+            className="text-stone-400 dark:text-stone-500"
+          />
         </div>
       </div>
 
       {bannerOpen && (
-        <div className="flex items-center justify-between border border-stone-200 rounded-md px-4 py-3 mb-6 text-sm text-stone-700">
+        <div className="flex items-center justify-between border border-stone-200 dark:border-stone-800 rounded-md px-4 py-3 mb-6 text-sm text-stone-700 dark:text-stone-300">
           Shipping fees will be added at checkout
           <button onClick={() => setBannerOpen(false)} aria-label="Dismiss">
-            <X size={18} className="text-stone-500" />
+            <X size={18} className="text-stone-500 dark:text-stone-400" />
           </button>
         </div>
       )}
 
       {results.length === 0 ? (
-        <p className="text-stone-500 py-12 text-center">
+        <p className="text-stone-500 dark:text-stone-400 py-12 text-center">
           No items match “{params.get("search_text")}”. Try another search.
         </p>
       ) : (
